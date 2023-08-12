@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.seleniumhq.selenium:selenium-java:$seleniumJavaVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter:$junitJupiter"
+    testImplementation "org.hamcrest:hamcrest:$hamcrest"
+}
+
+test {
+    useJUnitPlatform()
+}
