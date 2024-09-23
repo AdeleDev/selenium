@@ -7,6 +7,7 @@ public class NegativeTests extends Utils {
 
     @Test
     public void searchNotExistPage() {
+        driver.findElement(topMenu.getDocumentation()).click();
         driver.findElement(topMenu.getSearchInputButton()).click();
         try {
             searchMenu.searchInputText("111");

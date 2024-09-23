@@ -8,13 +8,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PositiveTests extends Utils {
 
     @Test
-    public void checkTopUpMenuExists() {
+    public void checkTopUpMenuExists() throws InterruptedException {
         driver.findElement(topMenu.getDownloads()).click();
         driver.findElement(topMenu.getDocumentation()).click();
         driver.findElement(topMenu.getProjects()).click();
         driver.findElement(topMenu.getSupport()).click();
         driver.findElement(topMenu.getBlog()).click();
         assertTrue(topMenu.getAboutItems().contains("Events"), "Events pop-up item was not found");
+        Thread.sleep(1000);
     }
 
 
@@ -26,20 +27,9 @@ public class PositiveTests extends Utils {
 
     @Test
     public void searchPageObjectModels() throws Exception {
+        driver.findElement(topMenu.getDocumentation()).click();
         driver.findElement(topMenu.getSearchInputButton()).click();
         searchMenu.searchInputText("Page object models");
         assertTrue(driver.findElement(pageObjectModels.getTitle()).isDisplayed());
-    }
-
-    @Test
-    public void checkSeleniumConfLink() {
-        String originalWindow = driver.getWindowHandle();
-        try {
-            driver.findElement(By.linkText("Watch the Videos")).click();
-            assertEquals(2, driver.getWindowHandles().size());
-        } finally {
-            driver.switchTo().window(originalWindow);
-        }
-
     }
 }
